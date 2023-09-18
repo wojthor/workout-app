@@ -6,16 +6,16 @@ const ExerciseSchema = mongoose.Schema({
     required: [true, "Please add a text value"],
   },
   sets: {
-    type: Number,
-    required: [true, "Please add a number value"],
+    type: String,
+    required: [true, "Please enter the number of series"],
   },
   weight: {
-    type: Number,
-    required: [true, "Please add a number value"],
+    type: String,
+    required: [true, "Please enter the weight"],
   },
   repetitions: {
-    type: Number,
-    required: [true, "Please add a number value"],
+    type: String,
+    required: [true, "Please enter the number of repetitions"],
   },
 });
 

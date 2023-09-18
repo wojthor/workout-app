@@ -1,0 +1,210 @@
+.my-sidebar {
+  height: 100vh;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  color: rgb(0, 0, 0);
+  font-family: "Poppins", sans-serif;
+  display: list-item;
+  background: var(--light);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: fixed;
+  flex-direction: column !important;
+  font-size: 20px;
+  width: 280px;
+  transition: all 0.3s ease;
+}
+
+/*Wygląd okienek z treningami*/
+.workout-display {
+  width: calc(100% - 260px); /* szerokość ekranu minus szerokość sidebar */
+  max-width: 600px; /* Maksymalna szerokość dla czytelności */
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.workout-date {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.add-date label {
+  margin-right: 10px;
+  margin-top: -45px;
+}
+
+.exercise-list {
+  border-bottom: 1px dashed #d0d0d0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.add-exercise-btn {
+  background: none;
+  border: none;
+
+  font-size: 1.5em;
+
+  display: block;
+  margin: 10px auto;
+}
+
+.add-exercise-btn:focus {
+  outline: none;
+}
+
+.workout-container {
+  width: calc(
+    70% - 260px
+  ); /* szerokość ekranu minus szerokość sidebar, ale większa niż wcześniej */
+  max-width: 600px; /* Zwiększona maksymalna szerokość */
+  display: flex; /* Zmieniłem na flex */
+  flex-direction: column; /* Kierunek kolumny dla lepszego układu */
+  align-items: center; /* Wycentrowanie zawartości w poziomie */
+  justify-content: center; /* Wycentrowanie zawartości w pionie */
+  height: 100px; /* Ustalenie wysokości dla bardziej prostokątnego wyglądu */
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 10px 20px; /* Zmniejszone wewnętrzne wypełnienie dla lepszego fitu */
+  border-radius: 5px;
+}
+
+.add-workout {
+  display: flex; /* Elementy wewnątrz będą w jednym rzędzie */
+  align-items: center; /* Wycentrowanie zawartości w pionie */
+  justify-content: space-between; /* Maksymalne odstępy między elementami */
+  height: 100%; /* Cała dostępna wysokość */
+  padding: 0 20px; /* Dodałem padding po bokach, żeby elementy nie były zbyt blisko krawędzi */
+}
+
+.form {
+  flex: 1; /* Pozwól na rozwinięcie się do dostępnej przestrzeni */
+  padding: 10px;
+  margin-left: -30px;
+  margin: 10px;
+
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.workout-form {
+  width: calc(70% - 260px);
+  max-width: 700px;
+  height: 80px;
+  margin: 10px auto;
+  padding: 1px 290px;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+}
+
+/* Dla pewności, żeby każdy element wewnątrz formularza nie zajmował pełnej szerokości */
+.label-container {
+  margin-left: -220px;
+}
+
+.input-date-container {
+  margin-right: 60px;
+  margin-left: 60px;
+}
+.button-container {
+  margin-top: 20px;
+}
+
+.workout-list {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+
+  text-decoration: underline;
+  color: #411010;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  width: 150%;
+  margin-left: -30%;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout {
+  cursor: pointer;
+}
+
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  margin-left: 580px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #000 transparent #555 transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.login a,
+.logout a {
+  /* Dla przykładu, stylizacja linków dla logowania/wylogowywania */
+  color: #007bff; /* domyślny kolor linku z Bootstrapa */
+  text-decoration: none;
+}
+
+.sidebar-logo {
+  color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.img-responsive {
+  align-items: center;
+  justify-content: center;
+  margin-left: 435px;
+}

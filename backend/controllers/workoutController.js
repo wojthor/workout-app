@@ -1,6 +1,5 @@
 const asyncHandler = require("express-async-handler");
 const Workout = require("../models/workoutModel");
-//const Exercise = require("../models/workoutModel");
 
 const setWorkout = asyncHandler(async (req, res) => {
   if (!req.body.date) {
@@ -8,7 +7,8 @@ const setWorkout = asyncHandler(async (req, res) => {
   }
 
   const workout = await Workout.create({
-    user: req.user.id,
+    user: req.user._id,
+
     date: req.body.date,
 
     exercise: [],
@@ -17,12 +17,17 @@ const setWorkout = asyncHandler(async (req, res) => {
   res.status(200).json(workout);
 });
 
+const getWorkout = asyncHandler(async (req, res) => {
+  const workout = await Workout.find({ user: req.user._id });
+  res.status(200).json(workout);
+});
+
 const addExercise = asyncHandler(async (req, res) => {
   const workout = await Workout.findById(req.params.id);
 
   if (!workout) {
     res.status(400);
-    res.json("Workout not found");
+
     throw new Error("Workout not found");
   }
 
@@ -60,4 +65,30 @@ const addExercise = asyncHandler(async (req, res) => {
   res.status(200).json(workout);
 });
 
-module.exports = { setWorkout, addExercise };
+const deleteWorkout = asyncHandler(async (req, res) => {
+  const workout = await Workout.findById(req.params.id);
+
+  if (!workout) {
+    res.status(400);
+    res.json("Workout not found");
+    throw new Error("Workout not found");
+  }
+
+  if (!req.user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  if (workout.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
+  }
+
+  await workout.remove();
+
+  res
+    .status(200)
+    .json({ message: `Workout ${req.params.id} has been deleted` });
+});
+
+module.exports = { setWorkout, addExercise, deleteWorkout, getWorkout };
