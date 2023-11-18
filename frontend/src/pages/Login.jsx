@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
+import { Form, Button } from "react-bootstrap";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ function Login() {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      console.log(message);
     }
 
     if (isSuccess || user) {
@@ -56,41 +57,38 @@ function Login() {
 
   return (
     <>
-      <section className="form">
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label>
-              <p className="label-txt">ENTER YOUR EMAIL</p>
-              <input
-                type="email"
-                className="input"
-                id="email"
-                name="email"
-                value={email}
-                onChange={onChange}
-              />
-              <div className="line-box">
-                <div className="line"></div>
-              </div>
-            </label>
-            <label>
-              <p className="label-txt">ENTER YOUR PASSWORD</p>
-              <input
-                type="password"
-                className="input"
-                id="password"
-                name="password"
-                value={password}
-                onChange={onChange}
-              />
-              <div className="line-box">
-                <div className="line"></div>
-              </div>
-            </label>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-      </section>
+      <Form
+        onSubmit={onSubmit}
+        className="d-flex flex-column d-flex align-items-center  "
+      >
+        <h1 className="mt-3 mb-3">Login and start your workout</h1>
+
+        <Form.Group className="mb-3 w-25">
+          <Form.Control
+            type="email"
+            className="input"
+            placeholder="Enter your email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={onChange}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3 w-25">
+          <Form.Control
+            type="password"
+            className="input"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={onChange}
+          />
+        </Form.Group>
+        <Button className="mb-3 w-25" variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     </>
   );
 }

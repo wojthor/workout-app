@@ -52,13 +52,14 @@ const addExercise = asyncHandler(async (req, res) => {
   }
 
   const newExericse = {
+    date: workout.date,
     name: req.body.name,
     sets: req.body.sets,
     weight: req.body.weight,
     repetitions: req.body.repetitions,
   };
 
-  workout.exercise.push(newExericse);
+  workout.exercises.push(newExericse);
 
   await workout.save();
 

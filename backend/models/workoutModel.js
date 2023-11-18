@@ -29,7 +29,7 @@ const WorkoutSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  exercise: [ExerciseSchema],
+  exercises: [ExerciseSchema],
 });
 
 module.exports = mongoose.model("Workout", WorkoutSchema);

@@ -1,14 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { addExercise, reset } from "../features/workout/workoutSlice";
 import { useState } from "react";
-import { Modal, Form } from "react-bootstrap";
-import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
-import { addExercise } from "../features/workout/workoutSlice";
-import Spinner from "../components/Spinner";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import Spinner from "../components/Spinner";
 
-function AddExercise({ workoutId, workoutDate, show, handleClose }) {
+function AddExerciseModal({ workoutDate, workoutId }) {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const { isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.workouts
@@ -23,16 +27,6 @@ function AddExercise({ workoutId, workoutDate, show, handleClose }) {
 
   const { name, sets, weight, repetitions } = exercise;
 
-  useEffect(() => {
-    if (isError) {
-      console.log("SIEMA");
-    }
-    if (isSuccess) {
-      console.log("Success, closing modal");
-      handleClose();
-    }
-  }, [isError, isSuccess, handleClose, message]);
-
   const onChange = (e) => {
     setExercise((prevState) => ({
       ...prevState,
@@ -42,21 +36,31 @@ function AddExercise({ workoutId, workoutDate, show, handleClose }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting exercise for workout", workoutId);
+
     if (!name || !sets || !weight || !repetitions) {
-      toast.error("Please enter empty fields");
+      console.log("Please enter empty fields");
     } else {
       const exerciseData = {
-        date: workoutDate,
         workoutId: workoutId,
+        date: workoutDate,
         name,
         sets,
         weight,
         repetitions,
       };
+      console.log(exerciseData);
       dispatch(addExercise(exerciseData));
     }
   };
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+    if (isSuccess) {
+      dispatch(reset());
+    }
+  }, [isError, isSuccess, message, dispatch]);
 
   if (isLoading) {
     return <Spinner />;
@@ -64,17 +68,30 @@ function AddExercise({ workoutId, workoutDate, show, handleClose }) {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose(workoutId)}>
-        {console.log(
-          "Modal is",
-          show ? "open" : "closed",
-          "for workout",
-          workoutId
-        )}
+      <Button
+        variant="primary"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleShow();
+        }}
+      >
+        Add exercise
+      </Button>
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Add Exercise</Modal.Title>
+          <Modal.Title>Add exercise</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body key={workoutDate}>
+          <p>Date: {workoutDate}</p>
+          <p>WorkoutID: {workoutId}</p>
+
           <Form onSubmit={onSubmit}>
             <Form.Group>
               <Form.Control
@@ -124,4 +141,4 @@ function AddExercise({ workoutId, workoutDate, show, handleClose }) {
   );
 }
 
-export default AddExercise;
+export default AddExerciseModal;

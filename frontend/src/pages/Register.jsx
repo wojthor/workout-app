@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
+import { Form, Button } from "react-bootstrap";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ function Register() {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      console.log(message);
     }
 
     if (isSuccess || user) {
@@ -44,7 +45,7 @@ function Register() {
     e.preventDefault();
 
     if (password !== password2) {
-      toast.error("Password do not match");
+      console.log("Password do not match");
     } else {
       const userData = {
         name,
@@ -61,65 +62,57 @@ function Register() {
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <label>
-        <p className="label-txt">ENTER YOUR NAME</p>
-        <input
-          type="text"
-          className="input"
-          name="name"
-          value={name}
-          onChange={onChange}
-        />
-        <div className="line-box">
-          <div className="line"></div>
-        </div>
-      </label>
+    <>
+      <Form
+        onSubmit={onSubmit}
+        className="d-flex flex-column d-flex align-items-center  "
+      >
+        <h1 className="mt-3 mb-3">Create your account</h1>
+        <Form.Group className="mb-3 w-25" controlId="nameInput">
+          <Form.Control
+            type="text"
+            placeholder="Enter your name"
+            name="name"
+            value={name}
+            onChange={onChange}
+          />
+        </Form.Group>
 
-      <label>
-        <p className="label-txt">ENTER YOUR EMAIL</p>
-        <input
-          type="email"
-          className="input"
-          name="email"
-          value={email}
-          onChange={onChange}
-        />
-        <div className="line-box">
-          <div className="line"></div>
-        </div>
-      </label>
+        <Form.Group className="mb-3 w-25" controlId="emailInput">
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={onChange}
+          />
+        </Form.Group>
 
-      <label>
-        <p className="label-txt">ENTER YOUR PASSWORD</p>
-        <input
-          type="password"
-          className="input"
-          name="password"
-          value={password}
-          onChange={onChange}
-        />
-        <div className="line-box">
-          <div className="line"></div>
-        </div>
-      </label>
+        <Form.Group className="mb-3 w-25" controlId="passwordInput">
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={onChange}
+          />
+        </Form.Group>
 
-      <label>
-        <p className="label-txt">REPEAT YOUR PASSWORD</p>
-        <input
-          type="password"
-          className="input"
-          name="password2"
-          value={password2}
-          onChange={onChange}
-        />
-        <div className="line-box">
-          <div className="line"></div>
-        </div>
-      </label>
+        <Form.Group className="mb-3 w-25" controlId="repeatPasswordInput">
+          <Form.Control
+            type="password"
+            name="password2"
+            placeholder="Confirm your password"
+            value={password2}
+            onChange={onChange}
+          />
+        </Form.Group>
 
-      <button type="submit">Submit</button>
-    </form>
+        <Button className="mb-3 w-25" variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </>
   );
 }
 

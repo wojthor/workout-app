@@ -6,7 +6,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  messege: "",
+  message: "",
 };
 
 //Create new workout
@@ -17,6 +17,7 @@ export const createWorkout = createAsyncThunk(
       const token = thunkAPI.getState().auth.user.token;
       return await workoutService.createWorkout(data, token);
     } catch (error) {
+      console.error("Błąd podczas wykonywania żądania:", error);
       const message =
         (error.response &&
           error.response.data &&
@@ -36,6 +37,7 @@ export const getWorkout = createAsyncThunk(
       const token = thunkAPI.getState().auth.user.token;
       return await workoutService.getWorkout(token);
     } catch (error) {
+      console.error("Błąd podczas wykonywania żądania:", error);
       const message =
         (error.response &&
           error.response.data &&
@@ -55,6 +57,9 @@ export const addExercise = createAsyncThunk(
       const token = thunkAPI.getState().auth.user.token;
       return await workoutService.addExercise(exerciseData, token);
     } catch (error) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
       const message =
         (error.response &&
           error.response.data &&
