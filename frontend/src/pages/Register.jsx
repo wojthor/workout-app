@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import Footer from "../components/Footer";
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 import { Form, Button } from "react-bootstrap";
@@ -29,7 +29,7 @@ function Register() {
     }
 
     if (isSuccess || user) {
-      navigate("/workouts");
+      navigate("/");
       dispatch(reset());
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
@@ -54,6 +54,7 @@ function Register() {
       };
 
       dispatch(register(userData));
+      console.log(userData);
     }
   };
 
@@ -65,9 +66,11 @@ function Register() {
     <>
       <Form
         onSubmit={onSubmit}
-        className="d-flex flex-column d-flex align-items-center  "
+        className="d-flex flex-column d-flex align-items-center pt-4 "
       >
-        <h1 className="mt-3 mb-3">Create your account</h1>
+        <h1 className="register mt-3 mb-3 w-50 text-center">
+          Create your account
+        </h1>
         <Form.Group className="mb-3 w-25" controlId="nameInput">
           <Form.Control
             type="text"
@@ -108,10 +111,13 @@ function Register() {
           />
         </Form.Group>
 
-        <Button className="mb-3 w-25" variant="primary" type="submit">
+        <Button className="mb-3 w-25" variant="dark" type="submit">
           Submit
         </Button>
       </Form>
+      <>
+        <Footer />
+      </>
     </>
   );
 }

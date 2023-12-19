@@ -28,41 +28,59 @@ function Sidebar({ children }) {
   }
 
   return (
-    <div className="d-flex vh-100">
-      <section className=" my-sidebar d-flex px-3 py-5 bg-light">
+    <div className="d-flex vh-100 ">
+      <section className=" my-sidebar d-flex px-3 py-3 bg-light">
         {user ? (
           <div className="d-flex flex-column gap-4">
             <ListGroup>
               <ListGroup.Item>
-                <Link to="/">
+                <Link
+                  to="/"
+                  className="link-offset-2 link-underline link-underline-opacity-0 link-dark   "
+                >
                   <AiOutlineHome /> Home
                 </Link>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Link to="/workouts">
+                <Link
+                  to="/workouts"
+                  className="link-offset-2 link-underline link-underline-opacity-0 link-dark "
+                >
                   <IoBarbellSharp /> Workouts
                 </Link>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Link className="logout" onClick={onLogout} to="/">
+                <Link
+                  to="/"
+                  className="link-offset-2 link-underline link-underline-opacity-0 link-dark "
+                  onClick={onLogout}
+                >
                   <AiOutlineLogout /> Logout
                 </Link>
               </ListGroup.Item>
             </ListGroup>
           </div>
         ) : (
-          <ListGroup>
-            <ListGroup.Item>
-              <Link to="/login">
-                <AiOutlineLogin /> Login
-              </Link>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Link to="/register">
-                <AiOutlineUserAdd /> Register
-              </Link>
-            </ListGroup.Item>
-          </ListGroup>
+          <div className="d-flex flex-column gap-4">
+            <ListGroup>
+              <ListGroup.Item>
+                <Link
+                  to="/login"
+                  className="link-offset-2 link-underline link-underline-opacity-0 link-dark "
+                >
+                  <AiOutlineLogin /> Login
+                </Link>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Link
+                  to="/register"
+                  className="link-offset-2 link-underline link-underline-opacity-0 link-dark "
+                >
+                  <AiOutlineUserAdd /> Register
+                </Link>
+              </ListGroup.Item>
+            </ListGroup>
+          </div>
         )}
       </section>
       {children}

@@ -12,6 +12,9 @@ import AddExerciseModal from "./AddExerciseModal";
 import ExerciseModal from "./ExerciseModal";
 
 function List({ workouts }) {
+  workouts = workouts
+    .slice()
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.workouts);
 
@@ -30,7 +33,7 @@ function List({ workouts }) {
                   <Accordion.Header className="z-n1">
                     <div className="w-100 d-flex justify-content-between gap-3">
                       <h5>{workout.date}</h5>
-                      <div className="z-999">
+                      <div className="d-flex gap-1">
                         <AddExerciseModal
                           workoutDate={workout.date}
                           workoutId={workout._id}
@@ -65,7 +68,9 @@ function List({ workouts }) {
             ))}
           </Accordion>
         ) : (
-          <h3>You have not set any workouts</h3>
+          <h3 className="d-flex justify-content-center">
+            You have not set any workouts
+          </h3>
         )}
       </div>
     </>
@@ -73,11 +78,3 @@ function List({ workouts }) {
 }
 
 export default List;
-
-/*
-<AddExercise
-                  workoutId={workout._id}
-                  workoutDate={workout.date}
-                  show={showModals[workout._id] || false}
-                  handleClose={handleClose}
-                /> */

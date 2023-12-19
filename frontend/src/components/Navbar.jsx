@@ -1,11 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { FaSignInAlt } from "react-icons/fa";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
+import image from "./image.jpg";
 import BSNavbar from "react-bootstrap/Navbar";
-import czechu from "./czechu.jpg";
+import Button from "react-bootstrap/Button";
+
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -14,10 +12,12 @@ function Navbar() {
   if (!user) {
     return (
       <BSNavbar className="bg-body-tertiary px-3">
-        <BSNavbar.Brand>
-          <Link to="/"> Workout App</Link>
+        <BSNavbar.Brand className="d-flex justify-content-center">
+          <Link to="/">
+            <img src="logo.svg" width="100" height="50" alt="logo" />
+          </Link>
         </BSNavbar.Brand>
-        {/* <BSNavbar.Toggle /> */}
+
         <BSNavbar.Collapse className="justify-content-end"></BSNavbar.Collapse>
       </BSNavbar>
     );
@@ -25,14 +25,15 @@ function Navbar() {
 
   return (
     <BSNavbar className="bg-body-tertiary px-3">
-      <BSNavbar.Brand>
-        <Link to="/"> Workout App</Link>
+      <BSNavbar.Brand className="">
+        <Link to="/">
+          <img src="logo.svg" width="100" height="50" alt="logo" />
+        </Link>
       </BSNavbar.Brand>
-      {/* <BSNavbar.Toggle /> */}
       <BSNavbar.Collapse className="justify-content-end">
         <BSNavbar.Text>
           <img
-            src={czechu}
+            src={image}
             alt=""
             width="35"
             height="35"

@@ -30,3 +30,23 @@
   justify-content: center;
   align-items: center;
 }
+
+/* FONT */
+.home-page-user,
+.footer {
+  font-family: "Alexandria", "Alexandria Placeholder", sans-serif;
+}
+
+@font-face {
+  font-family: "Brigends Expanded";
+  src: url("/Users/wojte/OneDrive/Pulpit/udawanie grafika/fonty/Brigends Expanded.woff")
+      format("woff"),
+    url("/Users/wojte/OneDrive/Pulpit/udawanie grafika/fonty/Brigends Expanded.woff2")
+      format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+.register.mt-3.mb-3,
+.login.mt-3.mb-3 {
+  font-family: "Brigends Expanded";
+}

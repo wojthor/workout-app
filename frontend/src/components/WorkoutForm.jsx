@@ -36,7 +36,7 @@ function WorkoutForm() {
             onChange={(e) => setText(e.target.value)}
           />
         </Form.Group>
-        <Button className=" w-25" variant="danger" type="submit">
+        <Button className=" w-25" variant="dark" type="submit">
           Add Workout
         </Button>
       </Form>

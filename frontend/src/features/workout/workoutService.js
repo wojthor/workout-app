@@ -41,14 +41,13 @@ const addExercise = async (exerciseData, token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ date, name, sets, weight, repetitions }), // Przekazujesz resztę danych (czyli dane ćwiczenia bez workoutId)
+    body: JSON.stringify({ date, name, sets, weight, repetitions }),
   };
 
   try {
     const response = await fetch(`${API_URL}${workoutId}`, config);
 
     if (!response.ok) {
-      // Obsługa błędów
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 

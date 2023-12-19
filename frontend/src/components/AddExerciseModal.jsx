@@ -92,8 +92,11 @@ function AddExerciseModal({ workoutDate, workoutId }) {
           <p>Date: {workoutDate}</p>
           <p>WorkoutID: {workoutId}</p>
 
-          <Form onSubmit={onSubmit}>
-            <Form.Group>
+          <Form
+            onSubmit={onSubmit}
+            className="d-flex flex-column d-flex align-items-center gap-2 w-100"
+          >
+            <Form.Group className="w-100">
               <Form.Control
                 type="text"
                 name="name"
@@ -102,7 +105,7 @@ function AddExerciseModal({ workoutDate, workoutId }) {
                 onChange={onChange}
               />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="w-100">
               <Form.Control
                 type="number"
                 name="sets"
@@ -111,7 +114,7 @@ function AddExerciseModal({ workoutDate, workoutId }) {
                 onChange={onChange}
               />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="w-100">
               <Form.Control
                 type="number"
                 name="weight"
@@ -120,7 +123,7 @@ function AddExerciseModal({ workoutDate, workoutId }) {
                 onChange={onChange}
               />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="w-100">
               <Form.Control
                 type="number"
                 name="repetitions"
@@ -129,7 +132,7 @@ function AddExerciseModal({ workoutDate, workoutId }) {
                 onChange={onChange}
               />
             </Form.Group>
-            <Form.Group>
+            <Form.Group className="w-100">
               <Button variant="secondary" type="submit">
                 Submit
               </Button>

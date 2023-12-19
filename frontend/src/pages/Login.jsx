@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import Footer from "../components/Footer";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 import { Form, Button } from "react-bootstrap";
@@ -28,7 +28,7 @@ function Login() {
     }
 
     if (isSuccess || user) {
-      navigate("/workouts");
+      navigate("/");
       dispatch(reset());
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
@@ -61,7 +61,9 @@ function Login() {
         onSubmit={onSubmit}
         className="d-flex flex-column d-flex align-items-center  "
       >
-        <h1 className="mt-3 mb-3">Login and start your workout</h1>
+        <h1 className="login mt-3 mb-3 w-50 text-center pt-4">
+          Login and start your workout
+        </h1>
 
         <Form.Group className="mb-3 w-25">
           <Form.Control
@@ -85,10 +87,13 @@ function Login() {
             onChange={onChange}
           />
         </Form.Group>
-        <Button className="mb-3 w-25" variant="primary" type="submit">
+        <Button className="mb-3 w-25" variant="dark" type="submit">
           Submit
         </Button>
       </Form>
+      <>
+        <Footer />
+      </>
     </>
   );
 }
