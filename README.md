@@ -29,7 +29,7 @@ To get started with Workout-App, follow these steps:
    npm install
 
 4. Start the application:
-   npm start# Workout-App
+   npm run dev # Workout-App
 
 ## Introduction
 
