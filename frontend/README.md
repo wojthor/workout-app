@@ -1,46 +1,40 @@
-# Getting Started with Create React App and Redux
+# Workout-App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Introduction
 
-## Available Scripts
+Workout-App is a dynamic web application designed for creating and tracking workouts. It allows users to browse through a variety of exercises, create custom workouts, and develop training plans with the created workouts. This application is built using the MERN stack, which includes MongoDB, Express.js, React.js, and Node.js.
 
-In the project directory, you can run:
+## Key Features
 
-### `npm start`
+- **Exercise Database**: Browse through a variety of exercises and add them to your workout.
+- **Custom Workouts**: Create your own workouts by adjusting exercises, sets, and repetitions.
+- **Training Plans**: Organize your workouts into structured training plans.
+- **Progress Tracking**: Monitor your progress and adjust your workouts as needed.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **MERN Stack**: A powerful full-stack development toolkit that includes MongoDB, Express.js, React.js, and Node.js.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started with Workout-App, follow these steps:
 
-### `npm run build`
+1. Clone the repository to your local environment:
+   git clone https://github.com/wojthor/workout-app.git
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Navigate to the project directory:
+   cd workout-app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install the required dependencies:
+   npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Start the application:
+   npm start
 
-### `npm run eject`
+## Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Contributions are welcome! Please read our contributing guidelines before submitting a pull request.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is licensed under the MIT License.
